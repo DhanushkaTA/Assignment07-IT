@@ -173,6 +173,9 @@
     </section>
     <!------------    main row End-------------->
 
+
+    <!------------    Start Customer  -------------->
+
     <section id="customer">
 
         <section class="container-fluid">
@@ -217,7 +220,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Customer Form</h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New CustomerDto Form</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body container-fluid">
@@ -274,7 +277,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add</button>
+                                                <button id="btnCustomerSave" type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add.</button>
                                             </div>
                                         </div>
                                     </div>
@@ -315,10 +318,10 @@
                     <div class="row mb-3">
                         <div class="row justify-content-end pe-sm-0-0">
                             <div class="col-12 col-sm-3 m-sm-0">
-                                <button type="button" class="btn up w-100"><i class="fa-solid fa-arrows-rotate"></i> Update</button>
+                                <button id="btnCustomerUpdate" type="button" class="btn up w-100"><i class="fa-solid fa-arrows-rotate"></i> Update</button>
                             </div>
                             <div class="col-12 col-sm-3 m-sm-0 p-sm-0 mt-2 mt-sm-0">
-                                <button type="button" class="btn btn-danger w-100"><i class="fa-solid fa-trash"></i> Delete</button>
+                                <button id="btnCustomerDelete" type="button" class="btn btn-danger w-100"><i class="fa-solid fa-trash"></i> Delete</button>
                             </div>
                         </div>
                     </div>
@@ -339,33 +342,7 @@
                         </thead>
 
                         <tbody class="table-success">
-                        <tr>
-                            <td>S001</td>
-                            <td>Tharindu</td>
-                            <td>Mathara</td>
-                            <td>0702026486</td>
-                        </tr>
 
-                        <tr>
-                            <td>S001</td>
-                            <td>Tharindu</td>
-                            <td>Mathara</td>
-                            <td>0702026486</td>
-                        </tr>
-
-                        <tr>
-                            <td>S001</td>
-                            <td>Tharindu</td>
-                            <td>Mathara</td>
-                            <td>0702026486</td>
-                        </tr>
-
-                        <tr>
-                            <td>S001</td>
-                            <td>Tharindu</td>
-                            <td>Mathara</td>
-                            <td>0702026486</td>
-                        </tr>
 
                         </tbody>
                     </table>
@@ -379,6 +356,7 @@
     </section>
 
     <!------------------------------Customer form End----------------------------------->
+
     <!------------------------------Item form Start----------------------------------->
 
     <section id="item" class="container-fluid mt-2">
@@ -406,7 +384,7 @@
                                 <label for="customerSearch" class="col-form-label fw-bolder ">Search Here</label>
                             </div>
                             <div class="col-12 col-md-6  ">
-                                <input type="text" class="form-control" id="customerSearch" >
+                                <input type="text" class="form-control" id="itemSearch" >
                             </div>
                             <div class="col-12 col-md-2 mt-2 mt-md-0">
                                 <button type="button" class="btn btn-success w-100"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
@@ -419,79 +397,6 @@
                 <!------------------------row 02(Add new)---------------------------->
                 <div class="row justify-content-md-end mt-2">
 
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn col-12 col-md-2 new" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i class="fa-solid fa-plus"></i> New
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel2">Add New Item Form</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body container-fluid">
-
-                                    <div class="row mt-3">
-
-                                        <div class="col-12">
-
-                                            <div class="row">
-                                                <!--------------------ID--------------------->
-                                                <div class="col-12 ">
-                                                    <div class="mb-3 row justify-content-between">
-                                                        <label for="itemIdNew" class="col-sm-2 col-form-label">ID</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="itemIdNew">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--------------------Dec--------------------->
-                                                <div class="col-12 ">
-                                                    <div class="mb-3 row justify-content-between">
-                                                        <label for="itemDesNew" class="col-sm-2 col-form-label">Description</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="itemDesNew">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--------------------QTy--------------------->
-                                                <div class="col-12 ">
-                                                    <div class="mb-3 row justify-content-between">
-                                                        <label for="itemQtyNew" class="col-sm-2 col-form-label">Qty</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="itemQtyNew">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--------------------Price--------------------->
-                                                <div class="col-12 ">
-                                                    <div class="mb-3 row column-gap-lg-4 justify-content-between ">
-                                                        <label for="itemPriceNew" class="col-sm-2  col-form-label ">Price</label>
-                                                        <div class="col-sm-8 ">
-                                                            <input type="text" class="form-control" id="itemPriceNew">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <!------------------------Form End (id nam ...)---------------------------->
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <!------------------------row 02 End (Add new)---------------------------->
 
@@ -502,7 +407,7 @@
 
                         <div class="row">
                             <!--------------------ID--------------------->
-                            <div class="col-12 col-md-6 col-lg-4">
+                            <div class="col-12 col-md-6 col-lg-6">
                                 <div class="mb-3 row justify-content-between">
                                     <label for="itemId" class="col-sm-2 col-form-label">ID</label>
                                     <div class="col-sm-8">
@@ -511,7 +416,7 @@
                                 </div>
                             </div>
                             <!--------------------Des--------------------->
-                            <div class="col-12 col-md-6 col-lg-4">
+                            <div class="col-12 col-md-6 col-lg-6">
                                 <div class="mb-3 row justify-content-between">
                                     <label for="itemDes" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-8">
@@ -520,7 +425,7 @@
                                 </div>
                             </div>
                             <!--------------------Price--------------------->
-                            <div class="col-12 col-md-6 col-lg-4">
+                            <div class="col-12 col-md-6 col-lg-6">
                                 <div class="mb-3 row justify-content-between">
                                     <label for="itemPrice" class="col-sm-2 col-form-label">Price</label>
                                     <div class="col-sm-8">
@@ -529,11 +434,11 @@
                                 </div>
                             </div>
                             <!--------------------Qty--------------------->
-                            <div class="col-12 col-md-6 col-lg-12 ">
-                                <div class="mb-3 row column-gap-lg-4 justify-content-between justify-content-lg-start">
-                                    <label for="itemQty" class="col-sm-2 col-lg-1 col-form-label ">Qty</label>
-                                    <div class="col-sm-8 col-lg-2">
-                                        <input type="text" class="form-control" id="itemQty">
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <div class="mb-3 row justify-content-between">
+                                    <label for="itemQtyOnHand" class="col-sm-2 col-form-label">Qty.OnHand</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="itemQtyOnHand">
                                     </div>
                                 </div>
                             </div>
@@ -548,9 +453,10 @@
 
                 <div class="row justify-content-md-end">
 
-                    <div class="btn-group col-md-3" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
-                        <button type="button" class="btn btn-warning"><i class="fa-solid fa-arrows-rotate"></i> Update</button>
+                    <div class="btn-group col-md-4" role="group" aria-label="Basic mixed styles example">
+                        <button id="itemAddBtn" type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i>   Add</button>
+                        <button id="itemDeleteBtn" type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+                        <button id="itemUpdateBtn" type="button" class="btn btn-warning"><i class="fa-solid fa-arrows-rotate"></i> Update</button>
                     </div>
 
                 </div>
@@ -585,19 +491,7 @@
                         <td>400</td>
                     </tr>
 
-                    <tr>
-                        <td>I001</td>
-                        <td>Chocolate 100g</td>
-                        <td>500.00</td>
-                        <td>400</td>
-                    </tr>
 
-                    <tr>
-                        <td>I001</td>
-                        <td>Chocolate 100g</td>
-                        <td>500.00</td>
-                        <td>400</td>
-                    </tr>
 
                     </tbody>
                 </table>
@@ -609,6 +503,7 @@
     </section>
 
     <!------------------------------Item form End----------------------------------->
+
     <!------------------------------Order form Start----------------------------------->
 
     <section id="order" class="container-fluid">
@@ -632,8 +527,8 @@
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6">
-                        <label for="customerId" class="form-label">Customer ID</label>
-                        <select class="form-select" id="customerId" aria-label="Floating label select example">
+                        <label for="customerId" class="form-label">CustomerDto ID</label>
+                        <select class="form-select" id="customerIdCmb" aria-label="Floating label select example">
                             <option selected>xxxx</option>
                             <option value="C001">C001</option>
                             <option value="C002">C002</option>
@@ -642,8 +537,8 @@
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6">
-                        <label for="customerName" class="form-label">Customer Name</label>
-                        <input type="text" class="form-control" id="customerName" >
+                        <label for="customerName" class="form-label">CustomerDto Name</label>
+                        <input type="text" class="form-control" id="cusNameOrder" >
                     </div>
 
                 </div>
@@ -659,7 +554,7 @@
 
                     <div class="mb-3 col-12 col-sm-6 mt-2">
                         <label for="itemId" class="form-label">Item ID</label>
-                        <select class="form-select" id="itemId" aria-label="Floating label select example">
+                        <select class="form-select" id="itemIdCmb" aria-label="Floating label select example">
                             <option selected>xxxx</option>
                             <option value="I001">I001</option>
                             <option value="I002">I002</option>
@@ -669,21 +564,21 @@
 
                     <div class="mb-3 col-12 ">
                         <label for="itemDes" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="itemDes" >
+                        <input type="text" class="form-control" id="itemDesOrder" >
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6">
                         <label for="itemQty" class="form-label">Qty</label>
-                        <input type="text" class="form-control" id="itemQty" >
+                        <input type="text" class="form-control" id="itemQtyOrder" >
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6">
                         <label for="itemPrice" class="form-label">Price</label>
-                        <input type="text" class="form-control" id="itemPrice" >
+                        <input type="text" class="form-control" id="itemPriceOrder" >
                     </div>
 
                     <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
-                        <button type="button" class="btn btn-success w-100"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <button id="orderAddBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-cart-plus"></i> Add</button>
                     </div>
 
                 </div>
@@ -718,7 +613,7 @@
                     </div>
 
                     <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
-                        <button type="button" class="btn btn-success w-100"><i class="fa-solid fa-money-check-dollar"></i> Place Order</button>
+                        <button id="placeOrderBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-money-check-dollar"></i> Place Order</button>
                     </div>
 
                 </div>
@@ -777,5 +672,7 @@
 <script src="assets/jquery/jquery-3.6.0.min.js"></script>
 
 <script src="controller/PageController.js"></script>
+<script src="controller/CustomerController.js"></script>
+<!--<script type="module" src="controller/CustomerController.js"></script>-->
 </body>
 </html>

@@ -32,4 +32,3 @@ function hideAll(){
       "display":"none"
   })
 }
-

@@ -331,7 +331,7 @@
                 <!------------------  row2>col Table Start --------------------->
                 <div class="col-12 col-sm-12 col-md-6">
 
-                    <table class="table table-bordered  table-hover ">
+                    <table id="tableCustomer" class="table table-bordered  table-hover ">
                         <thead class="table-dark">
                         <tr>
                             <td>ID</td>
@@ -466,7 +466,7 @@
 
             <div class="col-12 col-md-11 col-lg-10 mt-5">
 
-                <table class="table table-bordered  table-hover ">
+                <table id="itemTable" class="table table-bordered  table-hover ">
                     <thead class="table-dark">
                     <tr>
                         <td>ID</td>
@@ -477,20 +477,6 @@
                     </thead>
 
                     <tbody class="table-success">
-                    <tr>
-                        <td>I001</td>
-                        <td>Chocolate 100g</td>
-                        <td>500.00</td>
-                        <td>400</td>
-                    </tr>
-
-                    <tr>
-                        <td>I001</td>
-                        <td>Chocolate 100g</td>
-                        <td>500.00</td>
-                        <td>400</td>
-                    </tr>
-
 
 
                     </tbody>
@@ -529,10 +515,8 @@
                     <div class="mb-3 col-12 col-sm-6">
                         <label for="customerId" class="form-label">CustomerDto ID</label>
                         <select class="form-select" id="customerIdCmb" aria-label="Floating label select example">
-                            <option selected>xxxx</option>
-                            <option value="C001">C001</option>
-                            <option value="C002">C002</option>
-                            <option value="C003">C003</option>
+                            <option selected>Choose Customer</option>
+
                         </select>
                     </div>
 
@@ -555,20 +539,23 @@
                     <div class="mb-3 col-12 col-sm-6 mt-2">
                         <label for="itemId" class="form-label">Item ID</label>
                         <select class="form-select" id="itemIdCmb" aria-label="Floating label select example">
-                            <option selected>xxxx</option>
-                            <option value="I001">I001</option>
-                            <option value="I002">I002</option>
-                            <option value="I003">I003</option>
+                            <option selected>Choose Item</option>
+
                         </select>
+                    </div>
+
+                    <div class="mb-3 col-12 col-sm-6 mt-2">
+                        <label for="itemQtyOnHandOrder" class="form-label">QtyOnHand</label>
+                        <input type="text" class="form-control" id="itemQtyOnHandOrder" >
                     </div>
 
                     <div class="mb-3 col-12 ">
                         <label for="itemDes" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="itemDesOrder" >
+                        <input type="text" class="form-control" id="itemDesOrder">
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6">
-                        <label for="itemQty" class="form-label">Qty</label>
+                        <label for="itemQtyOrder" class="form-label">Qty</label>
                         <input type="text" class="form-control" id="itemQtyOrder" >
                     </div>
 
@@ -578,7 +565,7 @@
                     </div>
 
                     <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
-                        <button id="orderAddBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <button id="orderAddBtn" type="button" class="btn btn-success w-100"> Add</button>
                     </div>
 
                 </div>
@@ -625,7 +612,7 @@
 
             <div class="col-12 col-md-11 col-lg-10 mt-5">
 
-                <table class="table table-bordered  table-hover ">
+                <table id="orderTable" class="table table-bordered  table-hover ">
                     <thead class="table-dark">
                     <tr>
                         <td>Item Ud</td>
@@ -637,20 +624,7 @@
                     </thead>
 
                     <tbody class="table-success overflow-y-scroll">
-                    <tr>
-                        <td>I001</td>
-                        <td>Chocolate 100g</td>
-                        <td>500.00</td>
-                        <td>4</td>
-                        <td>2000</td>
-                    </tr>
-                    <tr>
-                        <td>I001</td>
-                        <td>Chocolate 100g</td>
-                        <td>500.00</td>
-                        <td>4</td>
-                        <td>2000</td>
-                    </tr>
+
 
                     </tbody>
                 </table>
@@ -672,7 +646,8 @@
 <script src="assets/jquery/jquery-3.6.0.min.js"></script>
 
 <script src="controller/PageController.js"></script>
-<script src="controller/CustomerController.js"></script>
-<!--<script type="module" src="controller/CustomerController.js"></script>-->
+<script type="module" src="controller/CustomerController.js"></script>
+<script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/OrderController.js"></script>
 </body>
 </html>

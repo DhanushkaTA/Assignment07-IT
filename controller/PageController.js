@@ -3,8 +3,8 @@ hideAll();
 $("#home").css("display","block")
 
 $("#homeBtn").on("click",function (){
-hideAll();
-$("#home").css("display","block")
+    hideAll();
+    $("#home").css("display","block")
 })
 
 $("#logoBtn").on("click",function (){
@@ -28,7 +28,7 @@ $("#orderBtn").on("click",function (){
 })
 
 function hideAll(){
-  $("#home,#customer,#order,#item").css({
-      "display":"none"
-  })
+    $("#home,#customer,#order,#item").css({
+        "display":"none"
+    })
 }

@@ -1,3 +1,4 @@
+import {OrderController} from "../controller/OrderController.js";
 
 hideAll();
 $("#home").css("display","block")
@@ -25,6 +26,7 @@ $("#itemBtn").on("click",function (){
 $("#orderBtn").on("click",function (){
     hideAll();
     $("#order").css("display","block")
+    OrderController.handleComboBox();
 })
 
 function hideAll(){

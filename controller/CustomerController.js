@@ -13,6 +13,12 @@ export class CustomerController {
         $('#btnCustomerDelete').on('click', () => {
             this.handleValidation2("Delete");
         });
+        $('#customerSearchBtn').on('click', () => {
+            this.handleSearchCustomer();
+        });
+        $('#customerClearBtn').on('click', () => {
+            this.clearTexts();
+        });
         // this.handleSaveCustomer.bind(this);
         this.handleLoadCustomer();
         this.handleTableClickEvent();
@@ -78,10 +84,7 @@ export class CustomerController {
 
 
         //clearData();
-        $('#customerId').val("");
-        $('#customerName').val("");
-        $('#customerAddress').val("");
-        $('#customerContact').val("");
+        this.clearTexts();
 
         $('#customerIdNew').val("");
         $('#customerNameNew').val("");
@@ -110,6 +113,32 @@ export class CustomerController {
             $('#customerContact').val($(event.target).closest('tr').find('td').eq(3).text())
 
         });
+    }
+
+    handleSearchCustomer(){
+        var customerId = $('#cusSearch').val();
+        let isFound=false;
+
+        for (let customer of getAllDB("DATA")){
+            if(customer._id===customerId){
+                $('#customerId').val(customer._id)
+                $('#customerName').val(customer._name)
+                $('#customerAddress').val(customer._address)
+                $('#customerContact').val(customer._contact)
+                isFound=true;
+            }
+        }
+        if(!isFound){
+            alert('Customer no found!!!');
+        }
+    }
+
+    clearTexts(){
+        $('#customerId').val("");
+        $('#customerName').val("");
+        $('#customerAddress').val("");
+        $('#customerContact').val("");
+        $('#cusSearch').val("")
     }
 }
 new CustomerController();

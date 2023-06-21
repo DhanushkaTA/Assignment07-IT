@@ -33,14 +33,24 @@
             background-color: #FFFF00;
             color: white!important;
         }
-        input{
+        input:focus:not(#cusSearch,#itemSearch){
             background-color: #CEE1F4!important;
             border: 1px solid #0078D7 !important;
         }
 
-        input:focus{
-            background-color: #a4f8ab !important;
-            border: 1px solid #00d71d !important;
+        .searchBox{
+            background-color: #faf794 !important;
+            border: 1px solid #ffe900 !important;
+        }
+
+        .cleanBtn{
+            background-color: #0a53be;
+            color:white;
+        }
+
+        .cleanBtn:hover{
+            background-color: #2b66bd;
+            color: #000000;
         }
 
         body{
@@ -194,12 +204,12 @@
                 <div class="col-12 col-sm-12 col-md-6">
 
                     <div class="mb-3 row">
-                        <label for="customerSearch" class="col-form-label">Search Customer</label>
+                        <label for="cusSearch" class="col-form-label">Search Customer</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="customerSearch" >
+                            <input type="text" class="form-control searchBox" id="cusSearch" placeholder="Enter customer ID here">
                         </div>
                         <div class="col-12 col-sm-3 mt-2 m-sm-0">
-                            <button type="button" class="btn btn-success w-100">Search</button>
+                            <button type="button" id="customerSearchBtn" class="btn btn-success w-100">Search</button>
                         </div>
 
                     </div>
@@ -239,7 +249,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!--------------------Dec--------------------->
+                                                            <!--------------------Name--------------------->
                                                             <div class="col-12 ">
                                                                 <div class="mb-3 row justify-content-between">
                                                                     <label for="customerNameNew" class="col-sm-2 col-form-label">Name</label>
@@ -248,7 +258,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!--------------------QTy--------------------->
+                                                            <!--------------------Address--------------------->
                                                             <div class="col-12 ">
                                                                 <div class="mb-3 row justify-content-between">
                                                                     <label for="customerAddressNew" class="col-sm-2 col-form-label">Address</label>
@@ -257,7 +267,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!--------------------Price--------------------->
+                                                            <!--------------------Contact--------------------->
                                                             <div class="col-12 ">
                                                                 <div class="mb-3 row column-gap-lg-4 justify-content-between ">
                                                                     <label for="customerContactNew" class="col-sm-2  col-form-label ">Contact</label>
@@ -320,9 +330,13 @@
                             <div class="col-12 col-sm-3 m-sm-0">
                                 <button id="btnCustomerUpdate" type="button" class="btn up w-100"><i class="fa-solid fa-arrows-rotate"></i> Update</button>
                             </div>
+                            <div class="col-12 col-sm-3 m-sm-0 ">
+                                <button id="customerClearBtn" type="button" class="btn cleanBtn w-100"><i class="fa-solid fa-brush"></i> Clear</button>
+                            </div>
                             <div class="col-12 col-sm-3 m-sm-0 p-sm-0 mt-2 mt-sm-0">
                                 <button id="btnCustomerDelete" type="button" class="btn btn-danger w-100"><i class="fa-solid fa-trash"></i> Delete</button>
                             </div>
+
                         </div>
                     </div>
 
@@ -381,13 +395,13 @@
 
                         <div class="row justify-content-md-between ">
                             <div class="col-12 col-md-2 text-center text-capitalize ">
-                                <label for="customerSearch" class="col-form-label fw-bolder ">Search Here</label>
+                                <label for="itemSearch" class="col-form-label fw-bolder ">Search Here</label>
                             </div>
                             <div class="col-12 col-md-6  ">
-                                <input type="text" class="form-control" id="itemSearch" >
+                                <input type="text" class="form-control searchBox" id="itemSearch" placeholder="Enter Item Id here">
                             </div>
                             <div class="col-12 col-md-2 mt-2 mt-md-0">
-                                <button type="button" class="btn btn-success w-100"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+                                <button type="button" id="itemSearchBtn" class="btn btn-success w-100"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
                             </div>
                         </div>
                     </div>
@@ -409,7 +423,7 @@
                             <!--------------------ID--------------------->
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="mb-3 row justify-content-between">
-                                    <label for="itemId" class="col-sm-2 col-form-label">ID</label>
+                                    <label for="itemId" class="col-sm-2 col-form-label">Item ID</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="itemId">
                                     </div>
@@ -453,10 +467,11 @@
 
                 <div class="row justify-content-md-end">
 
-                    <div class="btn-group col-md-4" role="group" aria-label="Basic mixed styles example">
-                        <button id="itemAddBtn" type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i>   Add</button>
-                        <button id="itemDeleteBtn" type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
-                        <button id="itemUpdateBtn" type="button" class="btn btn-warning"><i class="fa-solid fa-arrows-rotate"></i> Update</button>
+                    <div class="btn-group col-md-12 col-lg-4 " role="group" aria-label="Basic mixed styles example">
+                        <button id="itemAddBtn" type="button" class="btn btn-success "><i class="fa-solid fa-plus"></i>   Add</button>
+                        <button id="itemDeleteBtn" type="button" class="btn btn-danger "><i class="fa-solid fa-trash"></i> Delete</button>
+                        <button id="itemUpdateBtn" type="button" class="btn btn-warning "><i class="fa-solid fa-arrows-rotate"></i> Update</button>
+                        <button id="itemClearBtn" type="button" class="btn cleanBtn"><i class="fa-solid fa-brush"></i> Clear</button>
                     </div>
 
                 </div>
@@ -504,25 +519,30 @@
 
                     <div class="mb-3 col-12 col-sm-6 mt-2">
                         <label for="orderId" class="form-label">Order ID</label>
-                        <input type="text" class="form-control" id="orderId" >
+                        <label class="form-control" id="orderId" ></label>
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6 mt-2">
                         <label for="orderDate" class="form-label">Order Date</label>
-                        <input type="date" class="form-control" id="orderDate" >
+                        <label  class="form-control" id="orderDate" ></label>
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6">
-                        <label for="customerId" class="form-label">CustomerDto ID</label>
-                        <select class="form-select" id="customerIdCmb" aria-label="Floating label select example">
+                        <label for="customerId" class="form-label">Customer ID</label>
+                        <select class="form-select searchBox" id="customerIdCmb" aria-label="Floating label select example">
                             <option selected>Choose Customer</option>
 
                         </select>
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6">
-                        <label for="customerName" class="form-label">CustomerDto Name</label>
+                        <label for="customerName" class="form-label">Customer Name</label>
                         <input type="text" class="form-control" id="cusNameOrder" >
+                    </div>
+
+                    <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
+                        <button id="resetBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-paint-brush"></i> Reset</button>
+
                     </div>
 
                 </div>
@@ -538,7 +558,7 @@
 
                     <div class="mb-3 col-12 col-sm-6 mt-2">
                         <label for="itemId" class="form-label">Item ID</label>
-                        <select class="form-select" id="itemIdCmb" aria-label="Floating label select example">
+                        <select class="form-select searchBox" id="itemIdCmb" aria-label="Floating label select example">
                             <option selected>Choose Item</option>
 
                         </select>
@@ -555,17 +575,18 @@
                     </div>
 
                     <div class="mb-3 col-12 col-sm-6">
-                        <label for="itemQtyOrder" class="form-label">Qty</label>
-                        <input type="text" class="form-control" id="itemQtyOrder" >
-                    </div>
-
-                    <div class="mb-3 col-12 col-sm-6">
                         <label for="itemPrice" class="form-label">Price</label>
                         <input type="text" class="form-control" id="itemPriceOrder" >
                     </div>
 
+                    <div class="mb-3 col-12 col-sm-6">
+                        <label for="itemQtyOrder" class="form-label">Qty</label>
+                        <input type="text" class="form-control" id="itemQtyOrder" >
+                    </div>
+
                     <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
-                        <button id="orderAddBtn" type="button" class="btn btn-success w-100"> Add</button>
+                        <button id="orderAddBtn" type="button" class="btn btn-success w-100">Add</button>
+                        <button id="orderRemoveBtn" type="button" class="btn btn-danger w-100 mt-1">Remove</button>
                     </div>
 
                 </div>
@@ -601,6 +622,7 @@
 
                     <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
                         <button id="placeOrderBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-money-check-dollar"></i> Place Order</button>
+                        <button id="cancelOrderBtn" type="button" class="btn btn-danger w-100 mt-1"><i class="fa-solid fa-cancel"></i> Cancel Order</button>
                     </div>
 
                 </div>
@@ -610,7 +632,7 @@
 
         <section class="row justify-content-center">
 
-            <div class="col-12 col-md-11 col-lg-10 mt-5">
+            <div class="col-12 col-md-11 col-lg-10 mt-3">
 
                 <table id="orderTable" class="table table-bordered  table-hover ">
                     <thead class="table-dark">
@@ -645,9 +667,9 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/jquery/jquery-3.6.0.min.js"></script>
 
-<script src="controller/PageController.js"></script>
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module" src="controller/ItemController.js"></script>
 <script type="module" src="controller/OrderController.js"></script>
+<script type="module" src="controller/PageController.js"></script>
 </body>
 </html>

@@ -46,25 +46,119 @@ export class CustomerController {
             alert("Customer ID all ready exists !");
             return;
         }
-        saveCustomerDB(new Customer($('#customerIdNew').val(), $('#customerNameNew').val(), $('#customerAddressNew').val(), $('#customerContactNew').val()));
 
-        this.handleLoadCustomer();
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "Do you want to add this customer",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Add it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                saveCustomerDB(new Customer($('#customerIdNew').val(), $('#customerNameNew').val(), $('#customerAddressNew').val(), $('#customerContactNew').val()));
+                this.handleLoadCustomer();
+                swalWithBootstrapButtons.fire(
+                    'Added!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Registration in successfully'
+                })
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
+            }
+        })
+
+
 
 
     }
 
     handleUpdateCustomer() {
 
-        updateCustomerDB(new Customer($('#customerId').val(), $('#customerName').val(), $('#customerAddress').val(), $('#customerContact').val()));
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                updateCustomerDB(new Customer($('#customerId').val(), $('#customerName').val(), $('#customerAddress').val(), $('#customerContact').val()));
+                this.handleLoadCustomer();
 
-        this.handleLoadCustomer();
+                Swal.fire(
+                    'Updated!',
+                    'Your file has been updated.',
+                    'success'
+                )
+            }
+        })
+
+
     }
 
     handleDeleteCustomer() {
 
-        deleteCustomerDB(new Customer($('#customerId').val(), $('#customerName').val(), $('#customerAddress').val(), $('#customerContact').val()));
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        this.handleLoadCustomer();
+                deleteCustomerDB(new Customer($('#customerId').val(), $('#customerName').val(), $('#customerAddress').val(), $('#customerContact').val()));
+                this.handleLoadCustomer();
+
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+
+
     }
 
     handleLoadCustomer() {
@@ -126,11 +220,36 @@ export class CustomerController {
                 $('#customerAddress').val(customer._address)
                 $('#customerContact').val(customer._contact)
                 isFound=true;
+                this.handelMiniAlert(customerId+' is found',isFound);
             }
         }
         if(!isFound){
-            alert('Customer no found!!!');
+            this.handelMiniAlert(customerId+' not found!',isFound);
         }
+    }
+
+    handelMiniAlert(msg,isFound){
+        let message=msg;
+        let icn='success';
+        if(!isFound){
+            icn='error';
+        }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: icn,
+            title: msg
+        })
     }
 
     clearTexts(){

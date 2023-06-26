@@ -1,7 +1,7 @@
 
 var cusData = "DATA";
 var itemData = "ITEM";
-var orderData = "ORDER"
+var orderData = "ORDER";
 
 export function getAllDB(data){
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/normalize.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
     <style>
         .nav:hover{
             color: green !important;
@@ -75,13 +76,40 @@
             background-color: #22FF00!important;
             color: white!important;
         }
-        #red{
-            background-color: rgba(227, 102, 102, 0.78);
+        #oChang{
+            border: 1px solid #22FF00;
+            background-color: rgba(34, 255, 0, 0.5) !important;
+            color: #1abe01 !important;
+        }
+        #oFinalTotal{
+            border: 1px solid red;
+            background-color: rgb(255, 0, 0, 0.5) !important;
             color: red!important;
         }
+        #red{
+            border: 1px solid red;
+            background-color: rgb(255, 0, 0, 0.5) !important;
+            color: red!important;
+        }
+
         .head{
             background-color: #FFD43B!important;
             color: white;!important;
+        }
+        #lblYear,#lblToday{
+            color: #2fa152 !important;
+        }
+        #customerCard{
+            background-color: #0E0052!important;
+            color: white;
+        }
+        #itemCard{
+            background-color: #300043!important;
+            color: white;
+        }
+        #orderCard{
+            background-color: #F3062E!important;
+            color: white;
         }
     </style>
 </head>
@@ -137,11 +165,11 @@
                 <!------------    card col>row>col 1 -------------->
                 <div class="col-12 col-sm-3 mt-3 mt-sm-0">
 
-                    <div class="card " style="width: 100%;">
+                    <div id="customerCard" class="card " style="width: 100%;">
                         <div class="card-body">
-                            <h5 class="card-title">Customers</h5>
-                            <p class="card-text">10</p>
-                            <a href="#" class="btn btn-primary">View</a>
+                            <h5 class="card-title fs-3">Customers<span class="fs-6">/by today</span></h5>
+                            <p id="lblCustomer" class="card-text fs-1 fw-bolder lh-lg text-center">10</p>
+<!--                            <a href="#" class="btn btn-primary">View</a>-->
                         </div>
                     </div>
 
@@ -150,11 +178,11 @@
                 <!------------    card col>row>col 2 -------------->
                 <div class="col-12 col-sm-3 mt-3 mt-sm-0">
 
-                    <div class="card " style="width: 100%;">
+                    <div id="itemCard" class="card " style="width: 100%;">
                         <div class="card-body">
-                            <h5 class="card-title">Items</h5>
-                            <p class="card-text">10</p>
-                            <a href="#" class="btn btn-primary">View</a>
+                            <h5 class="card-title fs-3">Items<span class="fs-6">/by today</span></h5>
+                            <p id="lblItem" class="card-text fs-1 fw-bolder lh-lg text-center">10</p>
+<!--                            <a href="#" class="btn btn-primary">View</a>-->
                         </div>
                     </div>
 
@@ -163,11 +191,11 @@
                 <!------------    card col>row>col 3 -------------->
                 <div class="col-12 col-sm-3 mt-3 mt-sm-0">
 
-                    <div class="card " style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Orders</h5>
-                            <p class="card-text">10</p>
-                            <a href="#" class="btn btn-primary">View</a>
+                    <div id="orderCard" class="card " style="width: 100%;">
+                        <div class="card-body ">
+                            <h5 class="card-title fs-3">Orders<span class="fs-6">/by today</span></h5>
+                            <p id="lblOrder" class="card-text fs-1 fw-bolder lh-lg text-center">10</p>
+<!--                            <a href="#" class="btn btn-primary">View</a>-->
                         </div>
                     </div>
 
@@ -175,6 +203,29 @@
                 <!------------    card col>row>col 3 End -------------->
             </div>
             <!------------    card col>row End -------------->
+
+            <div class="row justify-content-sm-around">
+
+                <div class="col-12 col-sm-4 mt-4 ">
+                    <div class="card" style="width:100%">
+                        <div class="card-body">
+                            <h5 class="card-title">This Year Income</h5>
+                            <h1><i class="fa-solid fa-landmark"></i> RS.</h1>
+                            <p id="lblYear" class="fw-bolder fs-1 lh-lg">4564654</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 mt-4">
+                    <div class="card" style="width:100%">
+                        <div class="card-body">
+                            <h5 class="card-title ">This Month Income</h5>
+                            <h1><i class="fa-solid fa-landmark"></i> RS.</h1>
+                            <p id="lblToday" class="fw-bolder fs-1 lh-lg">4564654</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!------------    card col End -------------->
@@ -540,10 +591,9 @@
                         <input type="text" class="form-control" id="cusNameOrder" >
                     </div>
 
-                    <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
-                        <button id="resetBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-paint-brush"></i> Reset</button>
-
-                    </div>
+<!--                    <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">-->
+<!--                        <button id="resetBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-paint-brush"></i> Reset</button>-->
+<!--                    </div>-->
 
                 </div>
             </div>
@@ -584,10 +634,22 @@
                         <input type="text" class="form-control" id="itemQtyOrder" >
                     </div>
 
-                    <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
-                        <button id="orderAddBtn" type="button" class="btn btn-success w-100">Add</button>
-                        <button id="orderRemoveBtn" type="button" class="btn btn-danger w-100 mt-1">Remove</button>
+                    <div class="mb-3 col-12 col-sm-4">
+                        <button id="orderAddBtn" type="button" class="btn btn-success w-100 mt-0">Add</button>
                     </div>
+
+                    <div class="mb-3 col-12 col-sm-4">
+                        <button id="orderRemoveBtn" type="button" class="btn btn-danger w-100 ">Remove</button>
+                    </div>
+
+                    <div class="mb-3 col-12 col-sm-4">
+                        <button id="resetBtn" type="button" class="btn cleanBtn w-100 ">Reset</button>
+                    </div>
+
+<!--                    <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">-->
+<!--                        <button id="orderAddBtn" type="button" class="btn btn-success w-100">Add</button>-->
+<!--                        <button id="orderRemoveBtn" type="button" class="btn btn-danger w-100 mt-1">Remove</button>-->
+<!--                    </div>-->
 
                 </div>
             </div>
@@ -605,25 +667,116 @@
                     </div>
 
                     <div class="mb-1 col-6 fs-2">
-                        <label id="total" class="form-label">10000.00</label>
+                        <label id="total" class="form-label">00.00</label>
                     </div>
 
                     <div class="mb-2 col-12 ">
-                        <label for="discount" class="form-label">Discount</label>
-                        <input type="number" class="form-control" id="discount" >
+                        <label for="discountTxt" class="form-label">Discount</label>
+                        <input type="number" class="form-control" id="discountTxt" >
                     </div>
 
                     <div class="col-11 mb-1 text-center p-1 fs-2 fw-bold border border-danger rounded" id="red">
                         <div class="row">
-                            <label class="form-label col-12">Final Total</label>
-                            <label class="form-label col-12 mt-1" id="fTotal">9000.00</label>
+                            <label class="form-label col-12">Sub Total</label>
+                            <label class="form-label col-12 mt-1" id="fTotal">00.00</label>
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">
-                        <button id="placeOrderBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-money-check-dollar"></i> Place Order</button>
-                        <button id="cancelOrderBtn" type="button" class="btn btn-danger w-100 mt-1"><i class="fa-solid fa-cancel"></i> Cancel Order</button>
+<!--                    <div class="mb-3 col-12 col-sm-4 w-50">-->
+<!--                        <button id="placeOrderBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-money-check-dollar"></i> Place Order</button>-->
+<!--                    </div>-->
+
+                    <div class="mb-3 col-12 col-sm-4 w-50">
+                        <!-- Button trigger modal -->
+                        <button id="placeOrderBtn" type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fa-solid fa-money-check-dollar"></i> Place Order
+                        </button>
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">Place Order</h1>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-between">
+
+                                            <div class="mb-3 col-12 col-sm-6">
+                                                <label for="oId" class="form-label">Order Id</label>
+                                                <label class="form-control" id="oId" ></label>
+                                            </div>
+
+                                            <div class="mb-3 col-12 col-sm-6">
+                                                <label for="oDate" class="form-label">Order Date</label>
+                                                <label class="form-control" id="oDate" ></label>
+                                            </div>
+
+                                            <div class="mb-3 col-12 col-sm-6">
+                                                <label for="oCusId" class="form-label">Customer ID</label>
+                                                <label class="form-control" id="oCusId" ></label>
+                                            </div>
+
+                                            <div class="mb-3 col-12 col-sm-6">
+                                                <label for="oCusName" class="form-label">Customer Name</label>
+                                                <label class="form-control" id="oCusName" ></label>
+                                            </div>
+
+                                            <div class="mb-3 col-12 col-sm-6">
+                                                <label for="oItmCount" class="form-label">Item Count</label>
+                                                <label class="form-control" id="oItmCount" ></label>
+                                            </div>
+
+                                            <div class="mb-3 col-12 col-sm-6">
+                                                <label for="oDiscount" class="form-label">Discount</label>
+                                                <label class="form-control" id="oDiscount" ></label>
+                                            </div>
+
+                                            <div class="mb-3 col-12 col-sm-6">
+                                                <label for="oTotal" class="form-label">Total</label>
+                                                <label class="form-control" id="oTotal" ></label>
+                                            </div>
+
+                                            <div class="mb-3 col-12 col-sm-6">
+                                                <label for="oFinalTotal" class="form-label">Sub Total</label>
+                                                <label class="form-control" id="oFinalTotal" ></label>
+                                            </div>
+
+                                            <div class="mb-3 col-6 ">
+                                                <label for="oChang" class="form-label">Cash</label>
+                                                <input type="number" class="form-control" id="oCash" >
+                                            </div>
+
+                                            <div class="mb-3 col-6 ">
+                                                <label for="oChang" class="form-label">Balance</label>
+                                                <label class="form-control" id="oChang" ></label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button id="conformBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Conform</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="mb-3 col-12 col-sm-4 w-50">
+                        <button id="cancelOrderBtn" type="button" class="btn btn-danger w-100"><i class="fa-solid fa-cancel"></i> Cancel Order</button>
+                    </div>
+
+<!--                    <div class="col-12 col-md-12 mt-2 mt-md-0 mb-1">-->
+<!--                        <button id="placeOrderBtn" type="button" class="btn btn-success w-100"><i class="fa-solid fa-money-check-dollar"></i> Place Order</button>-->
+<!--                        <button id="cancelOrderBtn" type="button" class="btn btn-danger w-100 mt-1"><i class="fa-solid fa-cancel"></i> Cancel Order</button>-->
+<!--                    </div>-->
 
                 </div>
             </div>
@@ -664,12 +817,15 @@
 <!--------------------------- Home End   ---------------------------------------->
 
 
-<script src="assets/js/bootstrap.min.js"></script>
+
 <script src="assets/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module" src="controller/ItemController.js"></script>
 <script type="module" src="controller/OrderController.js"></script>
 <script type="module" src="controller/PageController.js"></script>
+<script type="module" src="controller/DashBoardController.js"></script>
 </body>
 </html>

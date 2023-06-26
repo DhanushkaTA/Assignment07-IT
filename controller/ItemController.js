@@ -38,23 +38,80 @@ export class ItemController{
             alert("Item code all ready exists !");
             return;
         }
-        saveItemDB(new Item($('#itemId').val(), $('#itemDes').val(), $('#itemPrice').val(), $('#itemQtyOnHand').val()));
 
-        this.handleLoadItem();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want do save Item ?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Save it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                saveItemDB(new Item($('#itemId').val(), $('#itemDes').val(), $('#itemPrice').val(), $('#itemQtyOnHand').val()));
+                this.handleLoadItem();
+
+                Swal.fire(
+                    'Saved!',
+                    'Your Item has been saved.',
+                    'success'
+                )
+            }
+        })
+
+
     }
 
     handleUpdateItem(){
 
-        updateItemDB(new Item($('#itemId').val(), $('#itemDes').val(), $('#itemPrice').val(), $('#itemQtyOnHand').val()));
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                updateItemDB(new Item($('#itemId').val(), $('#itemDes').val(), $('#itemPrice').val(), $('#itemQtyOnHand').val()));
+                this.handleLoadItem();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been updated.',
+                    'success'
+                )
+            }
+        })
 
-        this.handleLoadItem();
+
     }
 
     handleDeleteItem(){
 
-        deleteItemDB(new Item($('#itemId').val(), $('#itemDes').val(), $('#itemPrice').val(), $('#itemQtyOnHand').val()));
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteItemDB(new Item($('#itemId').val(), $('#itemDes').val(), $('#itemPrice').val(), $('#itemQtyOnHand').val()));
+                this.handleLoadItem();
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
 
-        this.handleLoadItem();
+
     }
 
     handleLoadItem(){
@@ -74,6 +131,23 @@ export class ItemController{
 
 
         this.clearTexts();
+
+    }
+
+    static handleLoadItemRefresh(){
+
+        $('#itemTable tbody tr td').remove();
+
+        getAllDB("ITEM").map((value) => {
+            var row = "<tr>" +
+                "<td>" + value._itemCode + "</td>" +
+                "<td>" + value._description + "</td>" +
+                "<td>" + value._unitPrice + "</td>" +
+                "<td>" + value._qtyOnHand + "</td>" +
+                "</tr>";
+
+            $('#itemTable tbody').append(row);
+        });
 
     }
 
@@ -118,11 +192,36 @@ export class ItemController{
                 $('#itemPrice').val(item._unitPrice)
                 $('#itemQtyOnHand').val(item._qtyOnHand)
                 isFound=true;
+                this.handelMiniAlertInItem(itemId+' is found',isFound);
             }
         }
         if(!isFound){
-            alert('Item no found!!!');
+            this.handelMiniAlertInItem(itemId+' is not found!',isFound);
         }
+    }
+
+    handelMiniAlertInItem(msg,isFound){
+        let message=msg;
+        let icn='success';
+        if(!isFound){
+            icn='error';
+        }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: icn,
+            title: msg
+        })
     }
 
     clearTexts(){
